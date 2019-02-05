@@ -43,6 +43,7 @@ void setupOLED()  {
   Serial.println(F("OLed ok"));
 }
 
+
 void OLEDputStringinbuffer(String text,int x, int y) {
   OLED.setTextWrap(false);
   OLED.setTextSize(1);
@@ -71,11 +72,13 @@ void setup() {
     Serial.begin(9600);
     setupBME();
     setupOLED();
+
 }
 
 void loop() {
   readBME280();
   OLED.clearDisplay();
+  OLED.stopscroll();
   OLED.drawRect(0,0,127,31,1);
   OLEDputStringinbuffer(String(temptext),2,2);
   OLEDputStringinbuffer(String(humiditytext),2,11);
